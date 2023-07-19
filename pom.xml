@@ -23,5 +23,11 @@
             <artifactId>ucanaccess</artifactId>
             <version>5.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.220</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

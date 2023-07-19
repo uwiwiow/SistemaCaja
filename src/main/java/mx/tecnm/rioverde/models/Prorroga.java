@@ -3,12 +3,11 @@ package mx.tecnm.rioverde.models;
  *
  * @author Gael Perez
  */
-import java.sql.Date;
 public class Prorroga {
 
     private String semestrePorPagar;
-    private Date fechaPedido;
-    private Date fechaLiq;
+    private String fechaPedido;
+    private String fechaLiq;
     private int totalPorPagar;
     private String concepto;
     private int noControl;  // FK
@@ -22,19 +21,19 @@ public class Prorroga {
         this.semestrePorPagar = semestrePorPagar;
     }
 
-    public Date getFechaPedido() {
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
-    public Date getFechaLiq() {
+    public String getFechaLiq() {
         return fechaLiq;
     }
 
-    public void setFechaLiq(Date fechaLiq) {
+    public void setFechaLiq(String fechaLiq) {
         this.fechaLiq = fechaLiq;
     }
 

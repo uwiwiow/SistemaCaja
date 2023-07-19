@@ -1,35 +1,46 @@
 package mx.tecnm.rioverde.dao;
+import java.io.FileReader;
 import mx.tecnm.rioverde.models.Pago;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import org.h2.tools.RunScript;
 /**
  *
  * @author Gael Perez
  */
 public class PagoDao {
     
-    public Connection conectar () {
+    public Connection conectar() {
         String database = "sistemaCaja";
-        String user = "root";
-        String password = "root";
-        String host = "localhost";
-        String port = "3306";
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String conexionUrl = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false";
-        Connection conexion = null;
+        String user = "sa";
+        String password = "";
+
+        String dbFile = ".\\src\\main\\java\\DB\\" + database + ".h2.db"; // Archivo de base de datos H2
+        String scriptFile = "src\\main\\java\\DB\\sistemaCaja.sql";
+
+        Connection connection = null;
         try {
-            Class.forName(driver);
-            conexion = DriverManager.getConnection(conexionUrl, user, password);
+            // Conectar a la base de datos H2 en modo embebido
+            String conexionUrl = "jdbc:h2:" + dbFile;
+            connection = DriverManager.getConnection(conexionUrl, user, password);
+
+            // Ejecutar el script SQL para crear tablas y cargar datos
+            RunScript.execute(connection, new FileReader(scriptFile));
+
+        } catch (SQLException e) {
+            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, e);
         } catch (Exception ex) {
-            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return conexion;
+        
+        return connection;
     }
         
     public void agregar (Pago pago) {

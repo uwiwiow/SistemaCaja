@@ -1,4 +1,5 @@
 package mx.tecnm.rioverde.dao;
+import java.io.FileReader;
 import mx.tecnm.rioverde.models.Alumno;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,34 +8,44 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import net.ucanaccess.jdbc.UcanaccessConnection;
+import org.h2.tools.RunScript;
 /**
  *
  * @author Gael Perez
  */
 public class AlumnoDao {
     
-    public Connection conectar () {
+    public Connection conectar() {
         String database = "sistemaCaja";
-        String user = "root";
-        String password = "root";
-        String host = "localhost";
-        String port = "3306";
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String conexionUrl = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false";
-        Connection conexion = null;
+        String user = "sa";
+        String password = "";
+
+        String dbFile = ".\\src\\main\\java\\DB\\" + database + ".h2.db"; // Archivo de base de datos H2
+        String scriptFile = "src\\main\\java\\DB\\sistemaCaja.sql";
+
+        Connection connection = null;
         try {
-            Class.forName(driver);
-            conexion = DriverManager.getConnection(conexionUrl, user, password);
+            // Conectar a la base de datos H2 en modo embebido
+            String conexionUrl = "jdbc:h2:" + dbFile;
+            connection = DriverManager.getConnection(conexionUrl, user, password);
+
+            // Ejecutar el script SQL para crear tablas y cargar datos
+            RunScript.execute(connection, new FileReader(scriptFile));
+
+        } catch (SQLException e) {
+            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, e);
         } catch (Exception ex) {
             Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return conexion;
-    }
         
+        return connection;
+    }
+    
     public boolean agregar (Alumno alumno) {
 
         try {
@@ -69,6 +80,58 @@ public class AlumnoDao {
         
         try {
             String sql = "select * from alumno";
+            Statement statement = conectar().createStatement();
+            ResultSet resultado = statement.executeQuery(sql);
+            
+            while (resultado.next()) {
+                Alumno alumno = new Alumno();
+                alumno.setNoControl(resultado.getInt("noControl"));
+                alumno.setNombre(resultado.getString("nombre"));
+                alumno.setApeP(resultado.getString("apeP"));
+                alumno.setApeM(resultado.getString("apeM"));
+                listado.add(alumno);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listado;
+        
+    }
+    
+    public List<Alumno> listar (String Cbox, String condicion, int typeCase) {
+
+        List<Alumno> listado = new ArrayList<>();
+        
+        /*
+        Coincide
+        Comienza con
+        Termina con
+        Incluye
+        */
+        
+        try {
+            String sql;
+            switch (typeCase){
+                case 0: {
+                    sql = "select * from alumno where " + Cbox + " = '" + condicion + "'";
+                    break;
+                }
+                case 1: {
+                    sql = "select * from alumno where " + Cbox + " LIKE '" + condicion + "%';";
+                    break;
+                }
+                case 2: {
+                    sql = "select * from alumno where " + Cbox + " LIKE '%" + condicion + "';";
+                    break;
+                }
+                case 3: {
+                    sql = "select * from alumno where " + Cbox + " LIKE '%" + condicion + "%';";
+                    break;
+                }
+                default: sql = "select * from alumno where " + Cbox + " = '" + condicion + "'";
+            }
             Statement statement = conectar().createStatement();
             ResultSet resultado = statement.executeQuery(sql);
             
@@ -129,17 +192,11 @@ public class AlumnoDao {
                 j++;
             }
             
-            String notInProrroga = "select DISTINCT alumno.noControl from alumno, prorroga WHERE alumno.noControl IN (" + csvString + ") and alumno.noControl != prorroga.noControl";
-            // busco los valores del csv que si se pueden borrar
-
-            ResultSet resultado = statement.executeQuery(notInProrroga);
-            int i = 0;
-            while (resultado.next()) {
-                arr[i] = resultado.getInt("noControl"); // los guardo en un array
-                i++;
-            }
+            int[] prorrogas = numInProrrogas.stream().mapToInt(Integer::intValue).toArray();
             
-            String csv = Arrays.toString(arr) // convierto la array de los numeros que si se pueden borrar a csv
+            removeElementsFromArray(array, prorrogas);
+            
+            String csv = Arrays.toString(array) // convierto la array de los numeros que si se pueden borrar a csv
                 .replace("[", "")
                 .replace("]", "")
                 .replaceAll("\\s+", "");
@@ -154,27 +211,46 @@ public class AlumnoDao {
         return numInProrrogas;
     }
     
-    public void guardar(Alumno alumno) {
-        
-        if (alumno.getNoControl() == 0) {
-            agregar(alumno);
-        } else {
-            editar(alumno);
+    private static void removeElementsFromArray(int[] arr1, int[] arr2) {
+        // Crear un HashSet con los elementos de arr2 para una búsqueda eficiente
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : arr2) {
+            set.add(num);
+        }
+
+        // Usar un índice para mantener el seguimiento de la posición válida en el nuevo array
+        int validIndex = 0;
+
+        // Iterar sobre arr1 y copiar solo los elementos que no están en arr2 al nuevo array
+        for (int num : arr1) {
+            if (!set.contains(num)) {
+                arr1[validIndex] = num;
+                validIndex++;
+            }
         }
         
+        // Rellenar el resto del array con ceros (o algún otro valor de relleno si es necesario)
+        while (validIndex < arr1.length) {
+            arr1[validIndex] = 0; // O cualquier otro valor de relleno que desees
+            validIndex++;
+        }
     }
+    
     
     public boolean importar(String path, String table){
 
-        // Detalles del archivo ACCDB
-        String accdbPath = path;
-        String accdbTableName = table;
   
         Connection conn;
         try {
             conn = DriverManager.getConnection("jdbc:ucanaccess://" + path);
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT [noControl],[nombre],[apeP],[apeM] FROM [" + table + "]");
+            ResultSet rs = null;
+            try {
+                rs = s.executeQuery("SELECT [noControl],[nombre],[apeP],[apeM] FROM [" + table + "]");
+            } catch (Exception ex) {
+                Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, "No se importo el nombre de la tabla", ex);
+                return false;
+            }
             
             StringBuilder sb = new StringBuilder();
             
