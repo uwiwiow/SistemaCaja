@@ -24,8 +24,8 @@ public class ProrrogaDao {
         String user = "sa";
         String password = "";
 
-        String dbFile = ".\\src\\main\\java\\DB\\" + database + ".h2.db"; // Archivo de base de datos H2
-        String scriptFile = "src\\main\\java\\DB\\sistemaCaja.sql";
+        String dbFile = ".\\src\\main\\resources\\database\\" + database + ".h2.db"; // Archivo de base de datos H2
+        String scriptFile = "src\\main\\resources\\database\\sistemaCaja.sql";
 
         Connection connection = null;
         try {
@@ -37,9 +37,9 @@ public class ProrrogaDao {
             RunScript.execute(connection, new FileReader(scriptFile));
 
         } catch (SQLException e) {
-            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ProrrogaDao.class.getName()).log(Level.SEVERE, null, e);
         } catch (Exception ex) {
-            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProrrogaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return connection;
@@ -146,9 +146,9 @@ public class ProrrogaDao {
 
             int[] pagos = numInPagos.stream().mapToInt(Integer::intValue).toArray();
             
-            removeElementsFromArray(array, pagos);
+            int [] re = removeElementsFromArray(array, pagos);
 
-            String csv = Arrays.toString(array) // convierto la array de los numeros que si se pueden borrar a csv
+            String csv = Arrays.toString(re) // convierto la array de los numeros que si se pueden borrar a csv
                 .replace("[", "")
                 .replace("]", "")
                 .replaceAll("\\s+", "");
@@ -157,13 +157,16 @@ public class ProrrogaDao {
             statement.execute(sql);
 
         } catch (Exception ex) {
-            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProrrogaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return numInPagos;
     }
 
-    private static void removeElementsFromArray(int[] arr1, int[] arr2) {
+    private static int[] removeElementsFromArray(int[] arr1, int[] arr2) {
+        
+        int [] re = new int [arr1.length - arr2.length];
+        
         // Crear un HashSet con los elementos de arr2 para una búsqueda eficiente
         HashSet<Integer> set = new HashSet<>();
         for (int num : arr2) {
@@ -176,25 +179,12 @@ public class ProrrogaDao {
         // Iterar sobre arr1 y copiar solo los elementos que no están en arr2 al nuevo array
         for (int num : arr1) {
             if (!set.contains(num)) {
-                arr1[validIndex] = num;
+                re[validIndex] = num;
                 validIndex++;
             }
         }
-        
-        // Rellenar el resto del array con ceros (o algún otro valor de relleno si es necesario)
-        while (validIndex < arr1.length) {
-            arr1[validIndex] = 0; // O cualquier otro valor de relleno que desees
-            validIndex++;
-        }
-    }
-    
-    public void guardar(Prorroga prorroga) {
 
-        if (prorroga.getIdProrroga() == 0) {
-            agregar(prorroga);
-        } else {
-            editar(prorroga);
-        }
+        return re;
 
     }
 

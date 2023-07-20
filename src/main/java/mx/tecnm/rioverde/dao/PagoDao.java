@@ -22,8 +22,8 @@ public class PagoDao {
         String user = "sa";
         String password = "";
 
-        String dbFile = ".\\src\\main\\java\\DB\\" + database + ".h2.db"; // Archivo de base de datos H2
-        String scriptFile = "src\\main\\java\\DB\\sistemaCaja.sql";
+        String dbFile = ".\\src\\main\\resources\\database\\" + database + ".h2.db"; // Archivo de base de datos H2
+        String scriptFile = "src\\main\\resources\\database\\sistemaCaja.sql";
 
         Connection connection = null;
         try {
@@ -35,9 +35,9 @@ public class PagoDao {
             RunScript.execute(connection, new FileReader(scriptFile));
 
         } catch (SQLException e) {
-            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, e);
         } catch (Exception ex) {
-            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return connection;

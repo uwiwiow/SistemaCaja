@@ -3,9 +3,6 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1920, 1080]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -59,7 +56,7 @@
                   <Component id="prorrogaBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="pagoBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="151" max="32767" attributes="0"/>
+                  <EmptySpace pref="349" max="32767" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" pref="81" max="-2" attributes="0"/>
@@ -89,8 +86,8 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="menuBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\house-solid.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\house-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -104,8 +101,8 @@
         </Component>
         <Component class="javax.swing.JButton" name="alumnoBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\user-solid.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\user-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -119,8 +116,8 @@
         </Component>
         <Component class="javax.swing.JButton" name="prorrogaBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\file-invoice-dollar-solid.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\file-invoice-dollar-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -135,8 +132,8 @@
         </Component>
         <Component class="javax.swing.JButton" name="pagoBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\money-bill-solid.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\money-bill-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -151,15 +148,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\tecnm.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\tecnm.png&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\tec.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\tec.png&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -620,9 +617,6 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="refreshBtn">
                       <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\refresh.png"/>
-                        </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Recargar pagina"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
@@ -950,9 +944,6 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="refreshProrrogaBtn">
                       <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\gael_\OneDrive\Documentos\NetBeansProjects\sistemaCaja\src\main\java\icons\refresh.png"/>
-                        </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Recargar pagina"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>

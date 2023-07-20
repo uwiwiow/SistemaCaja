@@ -1,17 +1,9 @@
 package mx.tecnm.rioverde.forms;
 import java.awt.Toolkit;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import mx.tecnm.rioverde.models.Alumno;
 import mx.tecnm.rioverde.models.Prorroga;
@@ -135,7 +127,6 @@ public class formulario extends javax.swing.JFrame {
         aaa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -146,7 +137,7 @@ public class formulario extends javax.swing.JFrame {
         jPanel5.setMinimumSize(new java.awt.Dimension(800, 80));
         jPanel5.setPreferredSize(new java.awt.Dimension(974, 80));
 
-        menuBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\house-solid.png")); // NOI18N
+        menuBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\house-solid.png"));
         menuBtn.setBorder(null);
         menuBtn.setContentAreaFilled(false);
         menuBtn.setFocusPainted(false);
@@ -156,7 +147,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        alumnoBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\user-solid.png")); // NOI18N
+        alumnoBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\user-solid.png"));
         alumnoBtn.setBorder(null);
         alumnoBtn.setContentAreaFilled(false);
         alumnoBtn.setFocusPainted(false);
@@ -166,7 +157,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        prorrogaBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\file-invoice-dollar-solid.png")); // NOI18N
+        prorrogaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\file-invoice-dollar-solid.png"));
         prorrogaBtn.setBorder(null);
         prorrogaBtn.setBorderPainted(false);
         prorrogaBtn.setContentAreaFilled(false);
@@ -177,7 +168,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        pagoBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\money-bill-solid.png")); // NOI18N
+        pagoBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\money-bill-solid.png"));
         pagoBtn.setBorder(null);
         pagoBtn.setBorderPainted(false);
         pagoBtn.setContentAreaFilled(false);
@@ -188,9 +179,9 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\tecnm.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\tecnm.png"));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\tec.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\tec.png"));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
@@ -210,7 +201,7 @@ public class formulario extends javax.swing.JFrame {
                 .addComponent(prorrogaBtn)
                 .addGap(18, 18, 18)
                 .addComponent(pagoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,7 +341,6 @@ public class formulario extends javax.swing.JFrame {
 
         jLabel7.setText("Apellido Paterno");
 
-        refreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\refresh.png")); // NOI18N
         refreshBtn.setToolTipText("Recargar pagina");
         refreshBtn.setBorder(null);
         refreshBtn.setBorderPainted(false);
@@ -544,7 +534,6 @@ public class formulario extends javax.swing.JFrame {
 
         jLabel17.setText("Semestre o Nivel");
 
-        refreshProrrogaBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\gael_\\OneDrive\\Documentos\\NetBeansProjects\\sistemaCaja\\src\\main\\java\\icons\\refresh.png")); // NOI18N
         refreshProrrogaBtn.setToolTipText("Recargar pagina");
         refreshProrrogaBtn.setBorder(null);
         refreshProrrogaBtn.setBorderPainted(false);
