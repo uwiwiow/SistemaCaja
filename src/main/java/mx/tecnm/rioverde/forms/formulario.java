@@ -137,7 +137,7 @@ public class formulario extends javax.swing.JFrame {
         jPanel5.setMinimumSize(new java.awt.Dimension(800, 80));
         jPanel5.setPreferredSize(new java.awt.Dimension(974, 80));
 
-        menuBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\house-solid.png"));
+        menuBtn.setIcon(new javax.swing.ImageIcon("icons\\house-solid.png"));
         menuBtn.setBorder(null);
         menuBtn.setContentAreaFilled(false);
         menuBtn.setFocusPainted(false);
@@ -147,7 +147,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        alumnoBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\user-solid.png"));
+        alumnoBtn.setIcon(new javax.swing.ImageIcon("icons\\user-solid.png"));
         alumnoBtn.setBorder(null);
         alumnoBtn.setContentAreaFilled(false);
         alumnoBtn.setFocusPainted(false);
@@ -157,7 +157,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        prorrogaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\file-invoice-dollar-solid.png"));
+        prorrogaBtn.setIcon(new javax.swing.ImageIcon("icons\\file-invoice-dollar-solid.png"));
         prorrogaBtn.setBorder(null);
         prorrogaBtn.setBorderPainted(false);
         prorrogaBtn.setContentAreaFilled(false);
@@ -168,7 +168,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        pagoBtn.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\money-bill-solid.png"));
+        pagoBtn.setIcon(new javax.swing.ImageIcon("icons\\money-bill-solid.png"));
         pagoBtn.setBorder(null);
         pagoBtn.setBorderPainted(false);
         pagoBtn.setContentAreaFilled(false);
@@ -179,9 +179,9 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\tecnm.png"));
+        jLabel4.setIcon(new javax.swing.ImageIcon("icons\\tecnm.png"));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\icons\\tec.png"));
+        jLabel5.setIcon(new javax.swing.ImageIcon("icons\\tec.png"));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
@@ -237,9 +237,9 @@ public class formulario extends javax.swing.JFrame {
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(617, 617, 617)
+                .addGap(574, 574, 574)
                 .addComponent(jLabel1)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,6 +341,7 @@ public class formulario extends javax.swing.JFrame {
 
         jLabel7.setText("Apellido Paterno");
 
+        refreshBtn.setIcon(new javax.swing.ImageIcon("icons\\refresh.png"));
         refreshBtn.setToolTipText("Recargar pagina");
         refreshBtn.setBorder(null);
         refreshBtn.setBorderPainted(false);
@@ -534,6 +535,7 @@ public class formulario extends javax.swing.JFrame {
 
         jLabel17.setText("Semestre o Nivel");
 
+        refreshProrrogaBtn.setIcon(new javax.swing.ImageIcon("icons\\refresh.png"));
         refreshProrrogaBtn.setToolTipText("Recargar pagina");
         refreshProrrogaBtn.setBorder(null);
         refreshProrrogaBtn.setBorderPainted(false);

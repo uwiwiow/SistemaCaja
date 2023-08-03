@@ -87,7 +87,7 @@
         <Component class="javax.swing.JButton" name="menuBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\house-solid.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\house-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -102,7 +102,7 @@
         <Component class="javax.swing.JButton" name="alumnoBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\user-solid.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\user-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -117,7 +117,7 @@
         <Component class="javax.swing.JButton" name="prorrogaBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\file-invoice-dollar-solid.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\file-invoice-dollar-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -133,7 +133,7 @@
         <Component class="javax.swing.JButton" name="pagoBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\money-bill-solid.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\money-bill-solid.png&quot;)" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -149,14 +149,14 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\tecnm.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\tecnm.png&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\resources\\icons\\tec.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(&quot;icons\\tec.png&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -251,9 +251,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="617" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="574" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="326" max="32767" attributes="0"/>
+                          <EmptySpace pref="369" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -617,6 +617,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="refreshBtn">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.ImageIcon(&quot;icons\\refresh.png&quot;)" type="code"/>
+                        </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Recargar pagina"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
@@ -944,6 +947,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="refreshProrrogaBtn">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.ImageIcon(&quot;icons\\refresh.png&quot;)" type="code"/>
+                        </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Recargar pagina"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>

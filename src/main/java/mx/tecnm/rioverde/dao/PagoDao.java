@@ -22,8 +22,10 @@ public class PagoDao {
         String user = "sa";
         String password = "";
 
-        String dbFile = ".\\src\\main\\resources\\database\\" + database + ".h2.db"; // Archivo de base de datos H2
-        String scriptFile = "src\\main\\resources\\database\\sistemaCaja.sql";
+        String dataFolder = System.getenv("APPDATA");
+
+        String dbFile = dataFolder + "\\SistemaCaja\\database\\sistemaCaja"; // Archivo de base de datos H2
+        String scriptFile = "database\\sistemaCaja.sql";
 
         Connection connection = null;
         try {
