@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `prorroga` (
   `fechaPedido` DATE DEFAULT NULL,
   `fechaLiq` DATE DEFAULT NULL,
   `totalPorPagar` INT DEFAULT NULL,
+  `totalPagado` INT DEFAULT NULL,
+  `restoPorPagar` INT DEFAULT NULL,
   `noControl` INT NOT NULL,
   `concepto` VARCHAR(80) DEFAULT NULL,
   PRIMARY KEY (`idProrroga`),
@@ -24,8 +26,6 @@ CREATE TABLE IF NOT EXISTS `prorroga` (
 CREATE TABLE IF NOT EXISTS `pago` (
   `idPago` INT NOT NULL,
   `abonoPago` INT DEFAULT NULL,
-  `totalPagado` INT DEFAULT NULL,
-  `restoPorPagar` INT DEFAULT NULL,
   `numeroPago` INT DEFAULT NULL,
   `fechaPago` DATE DEFAULT NULL,
   `idProrroga` INT NOT NULL,

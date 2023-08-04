@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -45,15 +47,16 @@ public class PagoDao {
         return connection;
     }
         
-    public void agregar (Pago pago) {
+    public boolean agregar (Pago pago) {
 
         try {
-            String sql = "insert into pago (idPago, abonoPago, totalPagado, restoPorPagar, numeroPago, fechaPago, idProrroga) values (" + pago.getIdPago() + ", " + pago.getAbonoPago() + ", " + pago.getTotalPagado() + ", " + pago.getRestoPorPagar() + ", " + pago.getNumeroPago() + ", " + pago.getFechaPago() + ", " + pago.getIdProrroga() + ");";
+            String sql = "insert into pago (idPago, abonoPago, numeroPago, fechaPago, idProrroga) values (" + pago.getIdPago() + ", " + pago.getAbonoPago() + ", " + pago.getNumeroPago() + ", '" + pago.getFechaPago() + "', " + pago.getIdProrroga() + ");";
             Statement statement = conectar().createStatement();
             statement.execute(sql);
-            
+            return true;
         } catch (Exception ex) {
             Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         
     }
@@ -61,7 +64,7 @@ public class PagoDao {
     public void editar (Pago pago) {
 
         try {
-            String sql = "update pago set idPago = " + pago.getIdPago() + ", abonoPago = " + pago.getAbonoPago() + ", totalPagado = " + pago.getTotalPagado() + ", restoPorPagar = " + pago.getRestoPorPagar() + ", numeroPago = " + pago.getNumeroPago() + ", fechaPago = " + pago.getFechaPago() + ", idProrroga = " + pago.getIdProrroga() + " where idPago = " + pago.getIdPago();
+            String sql = "update pago set idPago = " + pago.getIdPago() + ", abonoPago = " + pago.getAbonoPago() + ", numeroPago = " + pago.getNumeroPago() + ", fechaPago = " + pago.getFechaPago() + ", idProrroga = " + pago.getIdProrroga() + " where idPago = " + pago.getIdPago();
             Statement statement = conectar().createStatement();
             statement.execute(sql);
             
@@ -85,10 +88,8 @@ public class PagoDao {
                 Pago pago = new Pago();
                 pago.setIdPago(resultado.getInt("idPago"));
                 pago.setAbonoPago(resultado.getInt("abonoPago"));
-                pago.setTotalPagado(resultado.getInt("totalPagado"));
-                pago.setRestoPorPagar(resultado.getInt("restoPorPagar"));
                 pago.setNumeroPago(resultado.getInt("numeroPago"));
-                pago.setFechaPago(resultado.getDate("fechaPago"));
+                pago.setFechaPago(resultado.getString("fechaPago"));
                 pago.setIdProrroga(resultado.getInt("idProrroga"));
                 listado.add(pago);
             }
@@ -101,17 +102,40 @@ public class PagoDao {
         
     }
     
-    public void eliminar (Pago pago) {
+    public boolean eliminar (Pago pago) {
 
         try {
             String sql = "delete from pago where IdPago = " + pago.getIdPago();
             Statement statement = conectar().createStatement();
             statement.execute(sql);
+            return true;
+        } catch (Exception ex) {
+            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    
+    public boolean eliminar (int[] array) {
+        try {
+
+            String csvString = Arrays.toString(array) // convierto los numeros seleccionados a csv
+                .replace("[", "")
+                .replace("]", "")
+                .replaceAll("\\s+", "");
+
+            Statement statement = conectar().createStatement();
+            
+            String sql = "DELETE FROM prorroga WHERE idProrroga IN (" + csvString + ");";
+            statement.execute(sql);
+
+            return true;
             
         } catch (Exception ex) {
             Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        
+
     }
     
     public void guardar(Pago pago) {
@@ -124,5 +148,51 @@ public class PagoDao {
         
     }
     
+    public int getNextNumPago(int idProrroga) {
+        int next = 0;
+
+        try {
+            String sql = "select max(NUMEROPAGO) as maxNumPago from PAGO where IDPRORROGA = " + idProrroga;
+            Statement statement = conectar().createStatement();
+            ResultSet resultado = statement.executeQuery(sql);
+
+            if (resultado.next()) {
+                int maxNumPago = resultado.getInt("maxNumPago");
+                if (maxNumPago >= 1) {
+                    next = maxNumPago + 1;
+                } else {
+                    next = 1;
+                }
+            } else {
+                next = 1;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return next;
+    }
+
+    
+    public int calculatePagadoRestoProrroga(int idProrroga) {
+        int total = 0;
+
+        try {
+            String sql = "select sum(PAGO.ABONOPAGO) as totalPagado from PAGO where PAGO.IDPRORROGA = " + idProrroga;
+            Statement statement = conectar().createStatement();
+            ResultSet resultado = statement.executeQuery(sql);
+
+            if (resultado.next()) {
+                total = resultado.getInt("totalPagado");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(PagoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return total;
+    }
+
     
 }

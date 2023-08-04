@@ -3,15 +3,12 @@ package mx.tecnm.rioverde.models;
  *
  * @author Gael Perez
  */
-import java.sql.Date;
 public class Pago {
 
     private int idPago;
     private int abonoPago;
-    private int totalPagado;
-    private int restoPorPagar;
     private int numeroPago;
-    private Date fechaPago;
+    private String fechaPago;
     private int idProrroga;
     
     public int getIdPago() {
@@ -30,22 +27,6 @@ public class Pago {
         this.abonoPago = abonoPago;
     }
 
-    public int getTotalPagado() {
-        return totalPagado;
-    }
-
-    public void setTotalPagado(int totalPagado) {
-        this.totalPagado = totalPagado;
-    }
-
-    public int getRestoPorPagar() {
-        return restoPorPagar;
-    }
-
-    public void setRestoPorPagar(int restoPorPagar) {
-        this.restoPorPagar = restoPorPagar;
-    }
-
     public int getNumeroPago() {
         return numeroPago;
     }
@@ -54,11 +35,11 @@ public class Pago {
         this.numeroPago = numeroPago;
     }
 
-    public Date getFechaPago() {
+    public String getFechaPago() {
         return fechaPago;
     }
 
-    public void setFechaPago(Date fechaPago) {
+    public void setFechaPago(String fechaPago) {
         this.fechaPago = fechaPago;
     }
 

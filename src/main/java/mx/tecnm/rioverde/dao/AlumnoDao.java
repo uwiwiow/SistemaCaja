@@ -279,36 +279,58 @@ public class AlumnoDao {
 
     }
 
-    public String obtenerNombre (String noControl) {
-
+    public String obtenerNombre(String noControl) {
         String nombre = "";
-        
+
         try {
-            String sql = "select * from alumno where noControl = " + noControl;
+            String sql = "SELECT * FROM alumno WHERE noControl = " + noControl ;
             Statement statement = conectar().createStatement();
             ResultSet resultado = statement.executeQuery(sql);
-            
-            Alumno alumno = new Alumno();
-            
-            while (resultado.next()) {
-                alumno.setNoControl(resultado.getInt("noControl"));
-                alumno.setNombre(resultado.getString("nombre"));
-                alumno.setApeP(resultado.getString("apeP"));
-                alumno.setApeM(resultado.getString("apeM"));
+
+            if (resultado.next()) {
+                String nombreAlumno = resultado.getString("nombre");
+                String apePaterno = resultado.getString("apeP");
+                String apeMaterno = resultado.getString("apeM");
+
+                // Verificar si algún campo del nombre está como null y reemplazarlo con una cadena vacía.
+                nombreAlumno = (nombreAlumno != null) ? nombreAlumno : "";
+                apePaterno = (apePaterno != null) ? apePaterno : "";
+                apeMaterno = (apeMaterno != null) ? apeMaterno : "";
+
+                // Concatenar los nombres para obtener el nombre completo.
+                nombre = nombreAlumno + " " + apePaterno + " " + apeMaterno;
+            } else {
+                nombre = "Error"; // Si no se encontró al alumno, devolver "Error".
             }
 
-            nombre = alumno.getNombreCompleto();
-            
-            if (nombre.equals("null null null")){
-                nombre = "Error";
-            }
-            
         } catch (Exception ex) {
             Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return nombre;
-        
     }
+
+    
+    public int obtenerNoControl(int idProrroga) {
+        int noControl = 0;
+
+        try {
+            String sql = "SELECT DISTINCT ALUMNO.NOCONTROL " +
+                         "FROM ALUMNO, PRORROGA " +
+                         "WHERE PRORROGA.IDPRORROGA = " + idProrroga + " AND PRORROGA.NOCONTROL = ALUMNO.NOCONTROL";
+            Statement statement = conectar().createStatement();
+            ResultSet resultado = statement.executeQuery(sql);
+
+            if (resultado.next()) {
+                noControl = resultado.getInt("noControl");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return noControl;
+    }
+
     
 }

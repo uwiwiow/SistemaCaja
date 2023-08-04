@@ -10,6 +10,8 @@ public class Prorroga {
     private String fechaLiq;
     private int totalPorPagar;
     private String concepto;
+    private int totalPagado;
+    private int restoPorPagar;
     private int noControl;  // FK
     private int idProrroga; // PK
 
@@ -51,6 +53,22 @@ public class Prorroga {
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;
+    }
+
+    public int getTotalPagado() {
+        return totalPagado;
+    }
+
+    public void setTotalPagado(int totalPagado) {
+        this.totalPagado = totalPagado;
+    }
+
+    public int getRestoPorPagar() {
+        return restoPorPagar;
+    }
+
+    public void setRestoPorPagar(int restoPorPagar) {
+        this.restoPorPagar = restoPorPagar;
     }
 
     public int getNoControl() {
